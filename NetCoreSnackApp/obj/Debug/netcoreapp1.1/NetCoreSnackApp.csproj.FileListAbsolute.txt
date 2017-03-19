@@ -1,0 +1,9 @@
+D:\YEU\Software Development\Projects\NetCoreSnackApp\NetCoreSnackApp\bin\Debug\netcoreapp1.1\NetCoreSnackApp.deps.json
+D:\YEU\Software Development\Projects\NetCoreSnackApp\NetCoreSnackApp\bin\Debug\netcoreapp1.1\NetCoreSnackApp.runtimeconfig.json
+D:\YEU\Software Development\Projects\NetCoreSnackApp\NetCoreSnackApp\bin\Debug\netcoreapp1.1\NetCoreSnackApp.runtimeconfig.dev.json
+D:\YEU\Software Development\Projects\NetCoreSnackApp\NetCoreSnackApp\bin\Debug\netcoreapp1.1\NetCoreSnackApp.dll
+D:\YEU\Software Development\Projects\NetCoreSnackApp\NetCoreSnackApp\bin\Debug\netcoreapp1.1\NetCoreSnackApp.pdb
+D:\YEU\Software Development\Projects\NetCoreSnackApp\NetCoreSnackApp\obj\Debug\netcoreapp1.1\NetCoreSnackApp.csprojResolveAssemblyReference.cache
+D:\YEU\Software Development\Projects\NetCoreSnackApp\NetCoreSnackApp\obj\Debug\netcoreapp1.1\NetCoreSnackApp.AssemblyInfo.cs
+D:\YEU\Software Development\Projects\NetCoreSnackApp\NetCoreSnackApp\obj\Debug\netcoreapp1.1\NetCoreSnackApp.dll
+D:\YEU\Software Development\Projects\NetCoreSnackApp\NetCoreSnackApp\obj\Debug\netcoreapp1.1\NetCoreSnackApp.pdb
