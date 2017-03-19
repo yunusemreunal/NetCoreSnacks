@@ -1,11 +1,9 @@
-﻿using System.Buffers;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
+using WebApiContrib.Core.Formatter.Bson;
 
 namespace NetCoreSnackApp
 {
@@ -16,17 +14,10 @@ namespace NetCoreSnackApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvcCore(options =>
-                {
-                    options.RespectBrowserAcceptHeader = true;
-                    var jsonOutputFormatter = new JsonOutputFormatter(new JsonSerializerSettings(),
-                        ArrayPool<char>.Shared);
-                    options.OutputFormatters.Insert(0, jsonOutputFormatter);
-                })
-                .AddJsonFormatters(options => {
-                    options.ContractResolver = new DefaultContractResolver();
-                });
-
-
+            {
+                options.RespectBrowserAcceptHeader = true;
+                options.OutputFormatters.Add(new BsonOutputFormatter(new JsonSerializerSettings()));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
