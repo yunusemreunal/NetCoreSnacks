@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System.Buffers;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace NetCoreSnackApp
 {
@@ -14,18 +16,17 @@ namespace NetCoreSnackApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvcCore(options =>
-            {
-                options.RequireHttpsPermanent = true; // does not affect api requests
-                options.RespectBrowserAcceptHeader = true; // false by default
-                                                           //options.OutputFormatters.RemoveType<HttpNoContentOutputFormatter>();
+                {
+                    options.RespectBrowserAcceptHeader = true;
+                    var jsonOutputFormatter = new JsonOutputFormatter(new JsonSerializerSettings(),
+                        ArrayPool<char>.Shared);
+                    options.OutputFormatters.Insert(0, jsonOutputFormatter);
+                })
+                .AddJsonFormatters(options => {
+                    options.ContractResolver = new DefaultContractResolver();
+                });
 
-                //remove these two below, but added so you know where to place them...
-                //options.OutputFormatters.Add(new Json);
-                //options.InputFormatters.Add(new YourCustomInputFormatter());
 
-            })
-            .AddFormatterMappings();
-            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,7 +50,7 @@ namespace NetCoreSnackApp
 
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "api/{controller=Home}/{action=Index}/{id?}");
             });
 
         }
